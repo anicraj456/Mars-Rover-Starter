@@ -1,10 +1,12 @@
 class Message {
    // Write code here!
-constructor(command, name) {
-   this.command = command;
+constructor(name,commands) {
    this.name=name;
+   if(!name){
+      throw Error('keep name as first parameter');
+   }
+   this.commands = commands; 
  }
-
 
 }
 
