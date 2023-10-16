@@ -9,6 +9,8 @@ const Command = require('../command.js');
 describe("Rover class", function() {
 
   // 7 tests here!
+  //TEST 7
+
   it("should check constructor sets position and default values for mode and generatorWatts",function(){
       let rover = new Rover('MOVE','NORMAL',110);
       expect(rover.position).toEqual('MOVE');
@@ -68,16 +70,16 @@ describe("Rover class", function() {
 
     //TEST 11
 
-    it("responds correctly to the mode change command",function(){
-      let rover = new Rover('MOVE','NORMAL',110);
-      let commandArray = [];
-      let commandObj1 = new Command("MODE_CHANGE", "LOW_POWER");
-      commandArray.push(commandObj1);
-      let message = new Message('TEST_NAME',commandArray);
-      let results = rover.receiveMessage(message);
-      expect(results.results[0].completed).toEqual(true);
-      expect(rover.mode).toEqual("LOW_POWER");
-    });
+      it("responds correctly to the mode change command",function(){
+       let rover = new Rover('MOVE','NORMAL',110);
+       let commandArray = [];
+       let commandObj1 = new Command("MODE_CHANGE", "LOW_POWER");
+       commandArray.push(commandObj1);
+       let message = new Message('TEST_NAME',commandArray);
+       let results = rover.receiveMessage(message);
+       expect(results.results[0].completed).toEqual(true);
+       expect(rover.mode).toEqual("LOW_POWER");
+      });
 
       //TEST 12
       it("responds with a false completed value when attempting to move in LOW_POWER mode",function(){
@@ -85,13 +87,12 @@ describe("Rover class", function() {
         let commandArray = [];
         let commandObj1 = new Command("MODE_CHANGE", "LOW_POWER");
         let commandObj2 = new Command("MOVE", 98382);
-      commandArray.push(commandObj1);
+        commandArray.push(commandObj1);
         commandArray.push(commandObj2);
         let message = new Message('TEST_NAME',commandArray);
         let results = rover.receiveMessage(message);
         expect(results.results[1].completed).toEqual(false);
       });
-
 
      //TEST 13
       it("responds with the position for the move command",function(){
