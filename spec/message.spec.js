@@ -16,7 +16,7 @@ describe("Message class", function() {
 
    it("contains a commands array passed into the constructor as the 2nd argument",function(){
             let commandArray = [];
-            let commandObj = new Command("commandType", 10);
+            let commandObj = new Command("commandType", 1000);
             commandArray.push(commandObj);
             let message = new Message('name',commandArray);
             expect(message.commands).toEqual(commandArray);

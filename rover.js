@@ -8,16 +8,18 @@ class Rover {
       this.generatorWatts = 110;
    }
 
-
   receiveMessage(message){
          const results = [];
         //console.log("commands------"+message.commands.length);
 
       for(let i=0;i<message.commands.length;i++){
         const tempObject = message.commands[i];
+        //console.log(message.commands[i]);
+        //console.log("temp" + tempObject);
         const command = tempObject.commandType;
+        //console.log(command);
         const value = tempObject.value;
-        const result = this.process(command, value);
+        const result = this.roverStatus(command, value);
         results.push(result); 
     }
     return { name: message.name, results: results };
