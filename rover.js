@@ -42,7 +42,8 @@ class Rover {
         }
         else {
           result.completed = true;
-          result.position = value; this.position = value;
+          result.position = value; 
+          this.position = value;
         }
 
       }else if(command == 'MODE_CHANGE'){
