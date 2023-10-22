@@ -36,10 +36,8 @@ describe("Rover class", function() {
       let commandArray = [];
       let commandObj1 = new Command("commandType", 10);
       let commandObj2 = new Command("commandType", 20);
-      //let commandObj3 = new Command("commandType", 30);
       commandArray.push(commandObj1);
       commandArray.push(commandObj2);
-      //commandArray.push(commandObj3);
       let message = new Message('TEST_NAME',commandArray);
       let results = rover.receiveMessage(message);
       expect(results.results.length).toEqual(commandArray.length);
@@ -60,9 +58,11 @@ describe("Rover class", function() {
         mode: rover.mode,
         generatorWatts: rover.generatorWatts,
         position: rover.position
+
         }};
 
         let tempCheck;
+
         for (let i=0;i<message.commands.length;i++) {
             if (message.commands[i].commandType === 'STATUS_CHECK') { 
                 tempCheck = i;
