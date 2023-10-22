@@ -36,8 +36,10 @@ describe("Rover class", function() {
       let commandArray = [];
       let commandObj1 = new Command("commandType", 10);
       let commandObj2 = new Command("commandType", 20);
+      //let commandObj3 = new Command("commandType", 30);
       commandArray.push(commandObj1);
       commandArray.push(commandObj2);
+      //commandArray.push(commandObj3);
       let message = new Message('TEST_NAME',commandArray);
       let results = rover.receiveMessage(message);
       expect(results.results.length).toEqual(commandArray.length);
@@ -86,7 +88,7 @@ describe("Rover class", function() {
         let rover = new Rover('MOVE','NORMAL',110);
         let commandArray = [];
         let commandObj1 = new Command("MODE_CHANGE", "LOW_POWER");
-        let commandObj2 = new Command("MOVE", 98382);
+        let commandObj2 = new Command("MOVE", "LOW POWER");
         commandArray.push(commandObj1);
         commandArray.push(commandObj2);
         let message = new Message('TEST_NAME',commandArray);
