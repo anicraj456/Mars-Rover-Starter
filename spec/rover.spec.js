@@ -27,7 +27,7 @@ describe("Rover class", function() {
       commandArray.push(commandObj1);
       let message = new Message('TEST_NAME',commandArray);
       let results = rover.receiveMessage(message);
-      expect(results.name).toEqual('TEST_NAME');
+      expect(results.message).toEqual('TEST_NAME');
     });
 
  //TEST 9
@@ -55,10 +55,12 @@ describe("Rover class", function() {
       let results = rover.receiveMessage(message);
       
       let  status = {completed: true,
+        roverStatus: { 
+
         mode: rover.mode,
         generatorWatts: rover.generatorWatts,
         position: rover.position
-        };
+        }};
 
         let tempCheck;
         for (let i=0;i<message.commands.length;i++) {

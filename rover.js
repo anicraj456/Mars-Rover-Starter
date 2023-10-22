@@ -10,19 +10,15 @@ class Rover {
 
   receiveMessage(message){
          const results = [];
-        //console.log("commands------"+message.commands.length);
 
       for(let i=0;i<message.commands.length;i++){
         const tempObject = message.commands[i];
-        //console.log(message.commands[i]);
-        //console.log("temp" + tempObject);
         const command = tempObject.commandType;
-        //console.log(command);
         const value = tempObject.value;
         const result = this.roverStatus(command, value);
         results.push(result); 
     }
-    return { name: message.name, results: results };
+    return { message: message.name, results: results };
   }
 
    roverStatus(command, value){
@@ -30,10 +26,11 @@ class Rover {
       if(command == 'STATUS_CHECK'){
         result = {
           completed: true,
+          roverStatus: {
           mode: this.mode,
           generatorWatts: this.generatorWatts,
           position: this.position
-      };
+      }};
 
       }else if(command == 'MOVE'){
         if (this.mode === "LOW_POWER") { 
@@ -58,4 +55,4 @@ class Rover {
     }
   }
 
-module.exports = Rover;
+  module.exports = Rover;
