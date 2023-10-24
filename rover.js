@@ -34,7 +34,7 @@ class Rover {
 
       }};
 
-      }else if(command == 'MOVE'){
+      } else if(command == 'MOVE'){
         if (this.mode === "LOW_POWER") { 
 
           result.completed = false; 
@@ -46,21 +46,18 @@ class Rover {
           result.completed = true;
           result.position = value; 
           this.position = value;
-
         }
 
-      }else if(command == 'MODE_CHANGE'){
+      } else if(command == 'MODE_CHANGE'){
 
         result.completed = true;
         result.mode = value; this.mode = value;
 
       }else{
-
         result.completed = false;
         result.message = 'UNKNOWN COMMAND';
 
       }
-      
       return result;
     }
   }
